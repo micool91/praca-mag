@@ -10,6 +10,7 @@ Głównym problemem pracy będzie próba odpowiedzi na pytanie: Czy ten algorytm
 rekurencyjne sieci neuronowe, nauczanie języka, torch-rnn, char-rnn, lua, torch, dokeryzacja
 
 #linki
+referat: http://slides.com/michaljakobowski/c#/
 
 http://www.itreseller.pl/technologie/257-docker-kontenery
 
