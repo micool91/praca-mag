@@ -12,4 +12,5 @@ rekurencyjne sieci neuronowe, nauczanie języka, torch-rnn, char-rnn, lua, torch
 #linki
 
 http://www.itreseller.pl/technologie/257-docker-kontenery
+
 http://www.ai.c-labtech.net/sn/sneuro.html
