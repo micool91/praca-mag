@@ -12,9 +12,9 @@ W pracy opisałem działanie oraz wybrane możliwości wykorzystania algorytmu a
 3. Czym są rekurencyjne sieci neuronowe?
 4. Zasada działania algorytmu torch-rnn.
 5. Wybrane możliwości wykorzystania tego fenomenu:
-⋅⋅1. Dramat szekspirowski.
-⋅⋅1. Nauka języka polskiego.
-⋅⋅1. Cyfrowy podmiot liryczny, czyli sieci neuronowe piszą poezję.
+<br />1. Dramat szekspirowski.
+<br />2. Nauka języka polskiego.
+<br />3. Cyfrowy podmiot liryczny, czyli sieci neuronowe piszą poezję.
 6. Omówienie implementacji algorytmu.
 7. Wnioski.
 
