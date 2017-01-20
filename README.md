@@ -1,4 +1,4 @@
-# Uczenie maszynowe języka za pomocą rekurencyjnych sieci neuronowych.
+# Generowanie treści przy pomocy rekurencyjnych sieci neuronowych.
 
 ## keywords
 rekurencyjne sieci neuronowe, nauczanie języka, torch-rnn, char-rnn, lua, torch, dokeryzacja
