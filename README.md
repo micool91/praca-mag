@@ -31,7 +31,7 @@ W pracy opiszę działanie oraz wybrane możliwości wykorzystania algorytmu aut
 <br />[1] Ryszard Tadeusiewicz. <i>Sieci neuronowe.</i> Warszawa, 1993.
 <br />[2] Nick Bostrom. <i>Superintelligence: Paths, Dangers, Strategies.</i> US, 2014.
 <br />[3] Christopher Olah. <i>Understanding LSTM Networks.</i> http://colah.github.io/posts/2015-08-Understanding-LSTMs/
-<br />[4] TensorFlow. (kto>) <i>Recurrent Neural Networks.</i> https://www.tensorflow.org/tutorials/recurrent/
+<br />[4] TensorFlow. (<i>kto?</i>) <i>Recurrent Neural Networks.</i> https://www.tensorflow.org/tutorials/recurrent/
 <br /><i>to do: wzbogacić bibliografię.</i>
 
 
