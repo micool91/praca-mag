@@ -30,7 +30,7 @@ W podsumowaniu przedstawione zostaje porównanie wydajności działania procesu 
 <br />5.1. Przebieg eksperymentu.
 6. Eksperyment 3: Generowanie treści artykułów na wikipedii (sieć LSTM, 2-warstwowa, 128 ukrytych jednostek).
 <br />6.1. Przebieg eksperymentu.
-7. Eksperyment 4: Generowanie kodu źródłowego języka (?!) (sieć LSTM, [i]TO DO ...[/i] ).
+7. Eksperyment 4: Generowanie kodu źródłowego języka (?!) (sieć LSTM, <i>TO DO ...</i> ).
 <br />7.1. Przebieg eksperymentu.
 8. Porównanie wydajności procesu trenowania w zależności od wyboru architektury procesorów.
 <br />8.1. Tradycyjne procesory wielordzeniowe.
