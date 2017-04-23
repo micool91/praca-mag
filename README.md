@@ -1,33 +1,42 @@
-# Generowanie treści przy pomocy rekurencyjnych sieci neuronowych.
+# Generowanie treści przy pomocy rekurencyjnych sieci neuronowych
 
 ## keywords
 rekurencyjne sieci neuronowe, nauczanie języka, torch-rnn, char-rnn, lua, torch, dokeryzacja
 
-## wstęp (to do: poprawić)
-Motywają do napisania pracy magisterskiej jest chęć sprawdzenia jakie są granice współczenej informatyki. Sztuczna inteligencja od początku powstania informatyki rozpalała umysły autorów książek science-fiction. Już w latach 50 Alan Turing zaproponował sposób w jaki moglibyśmy osiągnąć sztuczną inteligencję. Chodzi tu o propozycję tak zwanego Umysłu dziecka. Turing uważał, że lepiej byłoby stworzyć jeden prosty umysł dziecka do symulacji, a potem je wychowywać, zamiast budować kompleksowy program do naśladowania umysłu dorosłych. Tego typu metodologia działania jest zawarta w idei tworzenia sieci neuronowych. Zastanawiające jest, czy implementacja modeli matematycznych jakimi są sieci neuronowe jest w stanie posługiwać się ludzkim językiem naturalnym w stopniu przypominającym żywą osobę? To pytanie zostało podjęte w tej pracy, aby na nie odpowiedzieć wykorzystano implementacje rekurencyjnych sieci neurownych zaproponowaną przez Andreja Karpathy'ego o nazwie char-rnn.
+## przedmowa
+Motywają do napisania pracy magisterskiej jest chęć poznania stosunowo młodego zagadnienia w informatyce jakim są sieci neuronowe. Sztuczna inteligencja już od początku powstania informatyki rozpalała umysły autorów książek science-fiction. Już w latach 50' Alan Turing zaproponował sposób w jaki moglibyśmy powołać do życia sztuczną inteligencję. Chodzi tu o propozycję tak zwanego umysłu dziecka. Turing uważał, że lepiej byłoby stworzyć jeden prosty model działania umysłu dziecka, a dopiero później przy pomocy precesu nauczania uzyskać model zbliżony do działania umysłu osoby dorosłej. Tego typu metodologia działania jest zawarta w idei tworzenia sieci neuronowych. Zastanawiające jest, czy implementacja modeli matematycznych jakimi są sieci neuronowe jest w stanie posługiwać się ludzkim językiem naturalnym w stopniu przypominającym żywą osobę? To pytanie zostało podjęte w tej pracy, aby na nie odpowiedzieć wykorzystano implementacje rekurencyjnych sieci neurownych zaproponowaną przez Andreja Karpathy'ego.
 
-## streszczenie pomysłu (to do: poprawić)
-W pracy opiszę działanie oraz wybrane możliwości wykorzystania algorytmu autorstwa Adreja Karpathy'ego o nazwie char-rnn. Moją motywacją do napisania tej pracy była niepochamowana ciekawość dotycząca granic możliwości współczesnej informatyki. Zastanawiało mnie, czy w sztuczny sposób zaimplementowane modele matematyczne są w stanie osiągnąć aż taką wydajność aby mogły one zacząć posługiwać się ludzkim językiem pisanym, który przecież do tej pory był dla nich niedostępny. Algorytm który opisałem w tej pracy realizuje wielopoziomową rekurencyjną sieć neuronową (RNN, LSTM oraz GRU) która potrafi nauczyć się posługiwać językiem z poziomu pojedyńczych liter. Innymi słowy model ten potrzebuje pliku tekstowego na wejściu, następnie Rekurencyjna Sieć Neuronowa uczy się przewidywać kolejne litery w sekwencjach słów. Sieci te mogą zostać użyte do wygenerowania tekstu litera po literze który będzie przypominał oryginalne treningowe dane. W pracy podejmę próbę odpowiedzi na następujące pytania: Czy ten algorytm może zostać wykorzystany do generowania tekstów, które będą przypominać teksty napisane przez człowieka? Czy da się w ten sposób "nauczyć" sieć neuronową posługiwania się językiem polskim? Oraz wreszczie: Czy sieci neuronowe mogą zostać wykorzystane do generowania treści (np. z użyciem języka znaczników). Pomniejszym problemem poruszonym w pracy będzie omówienie optymalnej specyfikacji sprzętowej którą można użyć do "trenowania sieci" oraz implementacja tego algorytmu w języku Lua z użyciem frameworku Torch. 
+W pracy podejmę próbę odpowiedzi na następujące pytania: Czy ten algorytm może zostać wykorzystany do generowania tekstów, które będą przypominać teksty napisane przez człowieka? Czy da się w ten sposób "nauczyć" sieć neuronową posługiwania się językiem polskim? Oraz wreszczie: Czy sieci neuronowe mogą zostać wykorzystane do generowania treści (np. z użyciem języka znaczników czy języków programowania obiektowego).
+
+## streszczenie pomysłu
+W pracy zostało opisane działanie oraz wybrane możliwości wykorzystania modelu rekurencyjnych sieci neuronowych autorstwa Adreja Karpathy'ego, udoskonalonego przez Justina Johnsona. Model ten nosi nazwę Torch-rnn i jego kod źródłowy jest dostępny na platformie github. Jest on realizacją wielopoziomowej rekurencyjnej sieci neuronowej (RNN, LSTM oraz GRU) której działanie sprowadza się do dwóch etapów. Pierwszym jest etap treningowy - zadany zbiór danych (plik w formacie tekstowym) zostaje przetworzony w taki sposób aby Sieć Neuronowa niejako nauczyła się przewidywać kolejne litery w sekwencji słów tak aby w sumie utworzyły one zbiór możliwie jak najbliższy temu który został zadany jako zbiór testowy. Generowanie tych sekwencji odbywa się w drugim etapie, podczas którego z zapisanych w trakcie treningowych iteracji tzw. sampli generowny jest wyjściowy tekst.
+
+Przy pomocy omawianej sieci neuronowej zostaje przeprowadzonych kilka eksperymentów prezentujących wybrane możliwości wykorzystania sieci neurnowych do generowania treści. Pierwszy ekesperyment pokazuje możliwości uproszczonej wersji sieci LSTM (Long short-term memory) z dwoma warstwami oraz 128 ukrytymi jednostkami (hidden units). Zbiorem treningowym dla tego eksperymentu jest zbiór wszystkich dramatów napisanych przez Willama Szekspira. W efekcie uzyskano sieć zdolną do generowania utworów podobnych do dramatu szekspirowskiego. Kolejny eksperyment przeprowadzono już na znacznie bardziej skomplikowanej sieci wykorzystującej 3 warstwy i 512 ukrytych jednostek (hidden units). Jako zbiór treningowy posłużył zbiór wszystkich powieści Henryka Sienkiewicza (oraz kilka jego wybranych opowiadań). W efekcie uzyskano bardziej zadowalające efekty, wygenerowane teksty znacznie bardziej przypominają swój pierwowzór. Trzeci eksperyment pokazuje w jaki sposób sieci neurnowe radzą sobie z generowaniem treści z wykorzystaniem języków znaczników. Zbiorem treningowym był kod źródłówy wybranych artykułów z platformy wikipedia. W efekcie sieć generuje treść przypominającą artykuły popularno-naukowe wraz z wykorzystaniem równań matematycznych. Czwarty eksperyment pokazuje sieć która potrafi generować kod źródłowy w wybranym języku programowania (W jakim?)...
+
+W podsumowaniu przedstawione zostaje porównanie wydajności działania procesu treningowego w zależnośći użytej specyfikacji sprzętowej oraz stopnia skomplikowania użytej sieci. 
 
 ## spis treści
 1. Przedmowa.
-<br />1.1. Cel i zakres pracy.
+<br />1.1. Przedmowa.
 <br />1.2. Streszczenie pracy.
-2. Sieci neuronowe.
-<br />2.1. Rekurencyjne sieci neuronowe (LSTM).
+2. Rekurencyjne sieci neuronowe (LSTM).
 3. Algorytm torch-rnn.
 <br />3.1. Opis algorytmu.
-<br />3.2. Implementacja.
-4. Eksperyment 1: Generowanie treści artykułów na wikipedii.
+<br />3.2. Proces instalacji sieci Torch-RNN.
+<br />3.3. Omówienie implementacji oraz wkładu własnego.
+4. Eksperyment 1: Dramat szekspirowski (sieć LSTM, 2-warstwowa, 128 ukrytych jednostek).
 <br />4.1. Przebieg eksperymentu.
-<br />5.2. Porównanie wydajności procesu trenowania w zależności od wyboru architektury procesorów.
-<br />&nbsp;&nbsp;&nbsp;&nbsp;5.2.1. Tradycyjne procesory wielordzeniowe.
-<br />&nbsp;&nbsp;&nbsp;&nbsp;5.2.1. Architektura nVidia CUDA.
-5. Eksperyment 2: ... <i>(TO DO)</i>
-6. Podsumowanie wyników pracy oraz wnioski.
-<br />6.1. Podsumowanie.
-<br />6.1. Przewidywania na temat przyszłości.
-7. Zakończenie.
+5. Eksperyment 2: Powieści Henryka Sienkiewicza (sieć LSTM, 3-warstwowa, 512 ukrytych jednostek).
+<br />5.1. Przebieg eksperymentu.
+6. Eksperyment 3: Generowanie treści artykułów na wikipedii (sieć LSTM, 2-warstwowa, 128 ukrytych jednostek).
+<br />6.1. Przebieg eksperymentu.
+7. Eksperyment 4: Generowanie kodu źródłowego języka (?!) (sieć LSTM, TO DO ... ).
+<br />7.1. Przebieg eksperymentu.
+8. Porównanie wydajności procesu trenowania w zależności od wyboru architektury procesorów.
+<br />8.1. Tradycyjne procesory wielordzeniowe.
+<br />8.2. Architektura nVidia CUDA.
+9. Podsumowanie wyników pracy oraz wnioski.
+10. Bibliografia.
 
 ## bibliografia
 
